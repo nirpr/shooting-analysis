@@ -17,7 +17,9 @@ def process_form():
         top_type, left_wing_type, left_corner_type = process_data()
     shooting_percentages = [right_corner, right_wing, top, left_wing, left_corner]
     shooting_percentages = [(int(item) / int(out_of)) * 100 for item in shooting_percentages]
-    chart_filename = create_shooting_chart(shooting_percentages)
+    miss_type = {'right corner': right_corner_type, 'right wing': right_wing_type, 'top': top_type,
+                 'left wing': left_wing_type, 'left corner': left_corner_type}  # TODO: create class "position"
+    chart_filename = create_shooting_chart(shooting_percentages, miss_type)
 
     return render_template('result.html', chart_filename=chart_filename)
 
@@ -40,7 +42,7 @@ def process_data():
         top_type, left_wing_type, left_corner_type
 
 
-def create_shooting_chart(shooting_percentages):
+def create_shooting_chart(shooting_percentages, miss_type):
     # Define positions and percentages
     positions = ['Right Corner', 'Right Wing', 'Top', 'Left Wing', 'Left Corner']
 
