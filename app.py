@@ -53,7 +53,7 @@ def create_shooting_chart(shooting_percentages, miss_type):
     plt.xlabel('Position')
     plt.ylabel('Shooting Percentage')
     plt.ylim(0, 100)
-    plt.xticks(rotation=45)
+    plt.xticks()
 
     chart_filename = 'static/shooting_chart.png'
     plt.savefig(chart_filename)
